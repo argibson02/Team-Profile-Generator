@@ -1,6 +1,6 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
-const makePage = require("./js/makePage");
+const makePage = require("./makePage.js");
 
 // TODO: Create an array of questions for user input
 const questions = [
