@@ -2,12 +2,10 @@
 
 .clasps {
   background-color: #AB321B;
-
 }
 
 body {
   background-color: #a1a078;
-
 }
 
 .custom-h4 {
@@ -48,11 +46,10 @@ body {
   #logo-container {
     font-size: 20px;
   }
-  
 }
+
 @media only screen and (max-width : 640px) {
   #logo-container {
     font-size: 16px;
   }
-  
 }
