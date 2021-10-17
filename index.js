@@ -1,6 +1,10 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
-const makePage = require("./makePage.js");
+const makePage = require("./src/makePage.js");
+
+const makeIntern = require("./lib/classIntern.js");
+const makeEngineer = require("./lib/classEngineer.js");
+const makeManager = require("./lib/classManager.js");
 
 
 const questions = [
