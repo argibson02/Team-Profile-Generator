@@ -34,8 +34,8 @@ function makePage(data) {
       <div class="container">
         <div class="section">
     
-          <!--   Icon Section   -->
-          <div class="row">
+          <!--   Card Section   -->
+          <div class="row" id="cardsRow">
             <!-- row start -->
     
             <!-- team manager -->
@@ -45,9 +45,9 @@ function makePage(data) {
                 <h5 class="center purple-text custom-h5 teamRole"> <i class="material-icons">event_seat</i> Manager</h5>
     
                 <ul class="card-content custom-content">
-                  <li class="cardList" >ID: <span class="teamId" ></span></li>
-                  <li class="cardList" >Email: <span class="teamEmail" ></span></li>
-                  <li class="cardList" >Office Number: <span class="teamOffice" ></span></li>
+                  <li class="cardList">ID: <span class="teamId">${data.id}</span></li>
+                  <li class="cardList">Email: <a class="teamEmail" href="mailto:${data.email}" target="_blank">${data.email}</a></li>
+                  <li class="cardList">Office Number: <span class="teamOffice">${data.mangerOffice}</span></li>
                 </ul>
               </div>
             </div>
@@ -59,26 +59,13 @@ function makePage(data) {
                 <h5 class="center purple-text custom-h5 teamRole"> <i class="material-icons">settings</i> Engineer</h5>
     
                 <ul class="card-content custom-content">
-                  <li class="cardList" >ID: <span class="teamId" ></span></li>
-                  <li class="cardList" >Email: <span class="teamEmail" ></span></li>
-                  <li class="cardList" >GitHub: <span class="teamGit" ></span></li>
+                  <li class="cardList">ID: <span class="teamId">${data.id}</span></li>
+                  <li class="cardList">Email: <a class="teamEmail" href="mailto:${data.email}" target="_blank">${data.email}</a></li>
+                  <li class="cardList">GitHub: <a class="teamGit" href="https://github.com/${data.enginerGit}" target="_blank">${data.enginerGit}</a></li>
                 </ul>
               </div>
             </div>
-    
-            <!-- team engineer -->
-            <div class="col s12 m3 card custom-card">
-              <div>
-                <h4 class="center purple-text custom-h4 teamName">John Smith</h4>
-                <h5 class="center purple-text custom-h5 teamRole"> <i class="material-icons">settings</i> Engineer</h5>
-    
-                <ul class="card-content custom-content">
-                  <li class="cardList" >ID: <span class="teamId" ></span></li>
-                  <li class="cardList" >Email: <span class="teamEmail" ></span></li>
-                  <li class="cardList" >GitHub: <span class="teamGit" ></span></li>
-                </ul>
-              </div>
-            </div>
+  
     
             <!-- team intern -->
             <div class="col s12 m3 card custom-card">
@@ -87,9 +74,9 @@ function makePage(data) {
                 <h5 class="center purple-text custom-h5 teamRole"> <i class="material-icons">school</i> Intern</h5>
     
                 <ul class="card-content custom-content">
-                  <li class="cardList" >ID: <span class="teamId" ></span></li>
-                  <li class="cardList" >Email: <span class="teamEmail" ></span></li>
-                  <li class="cardList" >School: <span class="teamSchool" ></span></li>
+                  <li class="cardList">ID: <span class="teamId">${data.id}</span></li>
+                  <li class="cardList">Email: <a class="teamEmail" href="mailto:${data.email}" target="_blank">${data.email}</a></li>
+                  <li class="cardList">School: <span class="teamSchool">${data.internSchool}</span></li>
                 </ul>
               </div>
             </div>

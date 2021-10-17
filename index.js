@@ -7,6 +7,18 @@ const makeEngineer = require("./lib/classEngineer.js");
 const makeManager = require("./lib/classManager.js");
 
 
+const addEmployee = [
+    // Would you like to add a person 
+    {
+        type: "list",
+        name: "addEmployee",
+        message: "Who would you like to add to your team?", //
+        choices: ["Engineer", "Intern", "Manager", new inquirer.Separator(), "Finish constructing webpage."]
+    }
+    ,
+];
+
+
 const managerQuestions = [
     // Manager prompts
     {
@@ -33,16 +45,10 @@ const managerQuestions = [
         message: "What is this team manager's office number?" //
     }
     ,
-
-    // Would you like to add a person 
-    {
-        type: "list",
-        name: "addEmployee",
-        message: "Who would you like to add next?", //
-        choices: ["Engineer", "Intern", new inquirer.Separator(), "Finish and generate HTML"]
-    }
-    ,
 ];
+
+
+
 
 const engineerQuestions = [
     // < Group
@@ -72,6 +78,7 @@ const engineerQuestions = [
     }
     ,
 ];
+
 
 const internQuestions = [
     // < Group
@@ -103,6 +110,8 @@ const internQuestions = [
 ];
 
 
+
+
 function writeFile(fileName, data, ) {
     fs.writeFile(fileName, data, (err) => {
         err ? console.error(err) : console.log('Success! Please check you local files for your new Team Webpage')
@@ -110,20 +119,30 @@ function writeFile(fileName, data, ) {
 }
 
 
+// function init() {
+// inquirer
+//     .prompt(managerQuestions)
+//     .then((response) => {
+//        let makeTeamPage = makePage(response);
+//         writeFile("teamPage.html", makeTeamPage);
+//         console.log(response);
+//     })
+// }
+
 function init() {
-inquirer
-    .prompt(managerQuestions)
-    .then((response) => {
-       let makeTeamPage = makePage(response);
-        writeFile("teamPage.html", makeTeamPage);
-        console.log(response);
-    })
+    inquirer
+        .prompt(managerQuestions)
 
 
 
-
-
-
+        
+        .then((response) => {
+           let makeTeamPage = makePage(response);
+            writeFile("teamPage.html", makeTeamPage);
+            console.log(response);
+        })
+    }
     
-}
+
+
 init();
