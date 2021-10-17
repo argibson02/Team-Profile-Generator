@@ -7,23 +7,23 @@ const makeEngineer = require("./lib/classEngineer.js");
 const makeManager = require("./lib/classManager.js");
 
 
-const questions = [
+const managerQuestions = [
     // Manager prompts
     {
         type: "input",
-        name: "managerName",
+        name: "name",
         message: "What is this team manager's name?" //
     }
     ,
     {
         type: "input",
-        name: "managerId",
+        name: "id",
         message: "What is this team manager's ID?" //
     }
     ,
     {
         type: "input",
-        name: "managerEmail",
+        name: "email",
         message: "What is this team manager's email?" //
     }
     ,
@@ -34,34 +34,34 @@ const questions = [
     }
     ,
 
-
     // Would you like to add a person 
     {
         type: "list",
-        name: "managerAnother",
+        name: "addEmployee",
         message: "Who would you like to add next?", //
         choices: ["Engineer", "Intern", new inquirer.Separator(), "Finish and generate HTML"]
     }
     ,
+];
 
-
+const engineerQuestions = [
     // < Group
     // Engineer prompts
     {
         type: "input",
-        name: "engineerName",
+        name: "name",
         message: "What is this engineer's name?" //
     }
     ,
     {
         type: "input",
-        name: "engineerId",
+        name: "id",
         message: "What is this engineer's ID?" //
     }
     ,
     {
         type: "input",
-        name: "engineerEmail",
+        name: "email",
         message: "What is this engineer's email?" //
     }
     ,
@@ -71,25 +71,26 @@ const questions = [
         message: "What is this engineer's GitHub?" //
     }
     ,
+];
 
-
+const internQuestions = [
     // < Group
     // Intern prompts
     {
         type: "input",
-        name: "internName",
+        name: "name",
         message: "What is this intern's name?" //
     }
     ,
     {
         type: "input",
-        name: "internId",
+        name: "intern",
         message: "What is this intern's ID?" //
     }
     ,
     {
         type: "input",
-        name: "internEmail",
+        name: "email",
         message: "What is this intern's email?" //
     }
     ,
@@ -111,11 +112,18 @@ function writeFile(fileName, data, ) {
 
 function init() {
 inquirer
-    .prompt(questions)
+    .prompt(managerQuestions)
     .then((response) => {
        let makeTeamPage = makePage(response);
         writeFile("teamPage.html", makeTeamPage);
         console.log(response);
     })
+
+
+
+
+
+
+    
 }
 init();
