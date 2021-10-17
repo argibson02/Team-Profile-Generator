@@ -3,7 +3,7 @@
 
 ## Table of Contents
   - [Description](#Description)
-  - [Installation Instructions](#Installation)
+  - [Installation Instructions and Getting Started](#Installation)
   - [Built With](#Built)
   - [Technologies Used](#Technologies)
   - [Authors](#Authors)
@@ -17,12 +17,16 @@ Features
 * Futurama theme!
 * Jest driven unit tests in the background.
 
+![Demo image of generator](./images/team-gen-demo.png)
+![Demo image of outputted HTML page](./images/team-output-demo.png)
+
+
 [Click this link WATCH the Team-Profile-Generator in action]()
  <br />
 
 
-## Installation Instructions
-Node.js, Inquirer, and Jest need to be installed. 
+## Installation Instructions and Getting Started
+Node.js, Inquirer, and Jest need to be installed. To start the application, navigate in a command console to the folder that houses index.js and enter in 'node index.js'.
 
 
 ## Built With
