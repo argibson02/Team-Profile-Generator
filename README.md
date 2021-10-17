@@ -15,24 +15,26 @@ This is a Futurama-themed team profile generator tool powered Node.js and Inquir
 
 Features
 * Futurama theme!
-* Jest driven unit tests in the back.
+* Jest driven unit tests in the background.
 
 [Click this link WATCH the Team-Profile-Generator in action]()
  <br />
 
 
 ## Installation Instructions
-Node.js and Inquirer need to be installed. 
+Node.js, Inquirer, and Jest need to be installed. 
 
 
 ## Built With
 * [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
 * [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
 * [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-* [Node.js](https://nodejs.org/en/)
 * [jQuery](https://api.jquery.com/)
+* [Node.js](https://nodejs.org/en/)
+* [Jest](https://jestjs.io/) 
 * [Inquirer](https://www.npmjs.com/package/inquirer) 
 * [Materialize](https://materializecss.com/)
+
 
 
 ## Technologies Used
