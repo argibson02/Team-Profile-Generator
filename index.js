@@ -2,16 +2,8 @@ const inquirer = require("inquirer");
 const fs = require("fs");
 const makePage = require("./makePage.js");
 
-// TODO: Create an array of questions for user input
+
 const questions = [
-    // Would you like to add a manager 
-    {
-        type: "confirm",
-        name: "managerAdd",
-        message: "Would you like to add a team manager?" //
-    }
-    ,
-    // < Group
     // Manager prompts
     {
         type: "input",
@@ -37,25 +29,18 @@ const questions = [
         message: "What is this team manager's office number?" //
     }
     ,
-    // Would you like to add ANOTHER manager 
+
+
+    // Would you like to add a person 
     {
-        type: "confirm",
+        type: "list",
         name: "managerAnother",
-        message: "Would you like to add another team manager?" //
+        message: "Who would you like to add next?", //
+        choices: ["Engineer", "Intern", new inquirer.Separator(), "Finish and generate HTML"]
     }
     ,
-    // < Group
 
 
-
-    
-    // Would you like to add an engineer 
-    {
-        type: "confirm",
-        name: "engineerAdd",
-        message: "Would you like to add an engineer?" //
-    }
-    ,
     // < Group
     // Engineer prompts
     {
@@ -82,25 +67,8 @@ const questions = [
         message: "What is this engineer's GitHub?" //
     }
     ,
-    // Would you like to add ANOTHER engineer 
-    {
-        type: "confirm",
-        name: "engineerAnother",
-        message: "Would you like to add another engineer?" //
-    }
-    ,
-    // < Group
 
 
-
-
-    // Would you like to add an intern 
-    {
-        type: "confirm",
-        name: "internAdd",
-        message: "Would you like to add an intern?" //
-    }
-    ,
     // < Group
     // Intern prompts
     {
@@ -127,34 +95,6 @@ const questions = [
         message: "What is this intern's school?" //
     }
     ,
-    // Would you like to add ANOTHER intern 
-    {
-        type: "confirm",
-        name: "internAnother",
-        message: "Would you like to add another intern?" //
-    }
-    ,
-    // < Group
-
-
-
-
-    // would you like to add
-
-    // {
-    //     type: "list",
-    //     name: "license",
-    //     message: "Which license type would you like to use?", //
-    //     choices: ["MIT", "Mozilla", "Apache", "No License"],
-    // }
-    // ,
-    // {
-    //     type: "checkbox",
-    //     name: "tech",
-    //     message: "What languages/tech did you build your project with?", //
-    //     choices: ["HTML", "CSS", "JavaScript", "jQuery", "Node.js"],
-    // }
-    // ,
 ];
 
 
