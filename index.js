@@ -6,6 +6,7 @@ const makePageTail = require("./src/makePageTail.js");
 const makeEngineer = require("./src/makeEngineer.js");
 const makeManager = require("./src/makeManager.js");
 const makeIntern = require("./src/makeIntern.js");
+const makeCss = require("./src/makeCSS.js")
 
 const Intern = require("./lib/classIntern.js");
 const Engineer = require("./lib/classEngineer.js");
@@ -236,6 +237,7 @@ function writeFile(fileName, data,) {
 
 function initialize() {
     writeFile("teamPage.html", makePageHead());
+    writeFile("teamPageCss.css", makeCss());
     addTeamMember()
 }
 initialize();
