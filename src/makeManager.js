@@ -11,7 +11,7 @@ function makeManagerCard(data) {
         <ul class="card-content custom-content">
           <li class="cardList">ID: <span class="teamId">${data.id}</span></li>
           <li class="cardList">Email: <a class="teamEmail" href="mailto:${data.email}" target="_blank">${data.email}</a></li>
-          <li class="cardList">Office Number: <span class="teamOffice">${data.mangerOffice}</span></li>
+          <li class="cardList">Office Number: <span class="teamOffice">${data.managerOffice}</span></li>
         </ul>
       </div>
     </div>

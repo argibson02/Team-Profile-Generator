@@ -20,7 +20,7 @@ const addQuestion = [
         type: "list",
         name: "addEmployee",
         message: "Who would you like to add to your team?", //
-        choices: ["Engineer", "Intern", "Manager", new inquirer.Separator(), "Finish constructing webpage."]
+        choices: ["Manager", "Engineer", "Intern", new inquirer.Separator(), "Finish constructing webpage."]
     }
     ,
 ];
@@ -30,25 +30,25 @@ const managerQuestions = [
     {
         type: "input",
         name: "name",
-        message: "What is this team manager's name?" //
+        message: "What is this manager's name?" //
     }
     ,
     {
         type: "input",
         name: "id",
-        message: "What is this team manager's ID?" //
+        message: "What is this manager's ID?" //
     }
     ,
     {
         type: "input",
         name: "email",
-        message: "What is this team manager's email?" //
+        message: "What is this manager's email?" //
     }
     ,
     {
         type: "input",
         name: "managerOffice",
-        message: "What is this team manager's office number?" //
+        message: "What is this manager's office number?" //
     }
     ,
 ];
@@ -77,7 +77,7 @@ const engineerQuestions = [
     {
         type: "input",
         name: "engineerGit",
-        message: "What is this engineer's GitHub?" //
+        message: "What is this engineer's GitHub username?" //
     }
     ,
 ];
@@ -201,8 +201,8 @@ function addTeamMember() {
 
 
 function finalize() {
-    fs.appendFile("./teamPage.html", addCard, (err) => {
-        err ? console.error(err) : console.log("Success. Please check you local files for the newly created webpage. :)");
+    fs.appendFile("./teamPage.html", makePageTail(), (err) => {
+        err ? console.error(err) : console.log("Success. Please check your local files for the newly created webpage. :)");
     })
 }
 
