@@ -1,13 +1,15 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
-const makePage = require("./src/makePage.js");
+const makePageHead = require("./src/makePageHead.js");
+const makePageTail = require("./src/makePageTail.js");
 
 const makeIntern = require("./lib/classIntern.js");
 const makeEngineer = require("./lib/classEngineer.js");
 const makeManager = require("./lib/classManager.js");
 
+const team = [];
 
-const addEmployee = [
+const addQuestion = [
     // Would you like to add a person 
     {
         type: "list",
@@ -112,12 +114,6 @@ const internQuestions = [
 
 
 
-function writeFile(fileName, data, ) {
-    fs.writeFile(fileName, data, (err) => {
-        err ? console.error(err) : console.log('Success! Please check you local files for your new Team Webpage')
-    })
-}
-
 
 // function init() {
 // inquirer
@@ -129,20 +125,71 @@ function writeFile(fileName, data, ) {
 //     })
 // }
 
-function init() {
+function promptManager() {
     inquirer
         .prompt(managerQuestions)
-
-
-
-        
         .then((response) => {
-           let makeTeamPage = makePage(response);
-            writeFile("teamPage.html", makeTeamPage);
+            let newManager = response;
             console.log(response);
+
         })
-    }
-    
+}
+
+function promptEngineer() {
+    inquirer
+        .prompt(engineerQuestions)
+        .then((response) => {
+            let newEngineer = response;
+            console.log(response);
+
+        })
+}
+
+function promptIntern() {
+    inquirer
+        .prompt(internQuestions)
+        .then((response) => {
+            let newIntern = response;
+            console.log(response);
+
+        })
+}
 
 
-init();
+function addTeamMember() {
+    inquirer
+        .prompt(addQuestion)
+        .then((response) => {
+            let memberRole = response.addEmployee;
+            console.log(response);
+            console.log(response.addEmployee);
+            if (memberRole === "Manager") {
+                promptManager();
+            }
+            else if (memberRole === "Engineer") {
+                promptEngineer();
+            }
+            else if (memberRole === "Intern") {
+                promptIntern();
+            }
+            else if (memberRole === "Finish constructing webpage.") {
+                promptManager();
+            }
+
+        })
+
+}
+
+
+function writeFile(fileName, data,) {
+    fs.writeFile(fileName, data, (err) => {
+        err ? console.error(err) : console.log('Success! Please check you local files for your new Team Webpage')
+    })
+}
+
+
+function initialize() {
+    writeFile("teamPage.html", makePageHead());
+    addTeamMember()
+}
+initialize();
