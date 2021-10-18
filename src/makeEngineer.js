@@ -10,11 +10,10 @@ function makeEngineerCard(data) {
         <ul class="card-content custom-content">
           <li class="cardList">ID: <span class="teamId">${data.id}</span></li>
           <li class="cardList">Email: <a class="teamEmail" href="mailto:${data.email}" target="_blank">${data.email}</a></li>
-          <li class="cardList">GitHub: <a class="teamGit" href="https://github.com/${data.enginerGit}" target="_blank">${data.engineerGit}</a></li>
+          <li class="cardList">GitHub: <a class="teamGit" href="https://github.com/${data.engineerGit}" target="_blank">${data.engineerGit}</a></li>
         </ul>
       </div>
     </div>
-  
   `
   };
   

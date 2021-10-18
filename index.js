@@ -1,11 +1,16 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
+
 const makePageHead = require("./src/makePageHead.js");
 const makePageTail = require("./src/makePageTail.js");
+const makeEngineer = require("./src/makeEngineer.js");
+const makeManager = require("./src/makeManager.js");
+const makeIntern = require("./src/makeIntern.js");
 
-const MakeIntern = require("./lib/classIntern.js");
-const MakeEngineer = require("./lib/classEngineer.js");
-const MakeManager = require("./lib/classManager.js");
+const Intern = require("./lib/classIntern.js");
+const Engineer = require("./lib/classEngineer.js");
+const Manager = require("./lib/classManager.js");
+
 
 const team = [];
 
@@ -19,7 +24,6 @@ const addQuestion = [
     }
     ,
 ];
-
 
 const managerQuestions = [
     // Manager prompts
@@ -48,9 +52,6 @@ const managerQuestions = [
     }
     ,
 ];
-
-
-
 
 const engineerQuestions = [
     // < Group
@@ -81,7 +82,6 @@ const engineerQuestions = [
     ,
 ];
 
-
 const internQuestions = [
     // < Group
     // Intern prompts
@@ -93,7 +93,7 @@ const internQuestions = [
     ,
     {
         type: "input",
-        name: "intern",
+        name: "id",
         message: "What is this intern's ID?" //
     }
     ,
@@ -115,24 +115,24 @@ const internQuestions = [
 
 
 
-// function init() {
-// inquirer
-//     .prompt(managerQuestions)
-//     .then((response) => {
-//        let makeTeamPage = makePage(response);
-//         writeFile("teamPage.html", makeTeamPage);
-//         console.log(response);
-//     })
-// }
-
 function promptManager() {
     inquirer
         .prompt(managerQuestions)
         .then((response) => {
-            var newMember = new MakeManager(response.name, response.id, response.email, response.managerOffice)
-            console.log(newMember);
+            let role = { role: "Manager" };
+            response = { ...response, ...role };
+            var newMember = new Manager(response.name, response.id, response.email, response.managerOffice, response.role);
             team.push(newMember);
-            console.log(team);
+            // console.log(team);
+            let addCard = makeManager(response)
+            fs.appendFile("./teamPage.html", addCard, (err) => {
+                if (err) {
+                    console.error(err)
+                }
+            })
+        })
+        .then(() => {
+            addTeamMember();
         })
 }
 
@@ -140,9 +140,20 @@ function promptEngineer() {
     inquirer
         .prompt(engineerQuestions)
         .then((response) => {
-            let newEngineer = response;
-            console.log(response);
-
+            let role = { role: "Engineer" };
+            response = { ...response, ...role };
+            var newMember = new Engineer(response.name, response.id, response.email, response.engineerGit, response.role);
+            team.push(newMember);
+            // console.log(team);
+            let addCard = makeEngineer(response)
+            fs.appendFile("./teamPage.html", addCard, (err) => {
+                if (err) {
+                    console.error(err)
+                }
+            })
+        })
+        .then(() => {
+            addTeamMember();
         })
 }
 
@@ -150,9 +161,20 @@ function promptIntern() {
     inquirer
         .prompt(internQuestions)
         .then((response) => {
-            let newIntern = response;
-            console.log(response);
-
+            let role = { role: "Intern" };
+            response = { ...response, ...role };
+            var newMember = new Intern(response.name, response.id, response.email, response.internSchool, response.role);
+            team.push(newMember);
+            // console.log(team);
+            let addCard = makeIntern(response)
+            fs.appendFile("./teamPage.html", addCard, (err) => {
+                if (err) {
+                    console.error(err)
+                }
+            })
+        })
+        .then(() => {
+            addTeamMember();
         })
 }
 
@@ -162,8 +184,6 @@ function addTeamMember() {
         .prompt(addQuestion)
         .then((response) => {
             let memberRole = response.addEmployee;
-            console.log(response);
-            console.log(response.addEmployee);
             if (memberRole === "Manager") {
                 promptManager();
             }
@@ -174,23 +194,25 @@ function addTeamMember() {
                 promptIntern();
             }
             else if (memberRole === "Finish constructing webpage.") {
-                promptManager();
+                finalize();
             }
-
         })
-
 }
 
 
-function writeFile(fileName, data,) {
-    fs.writeFile(fileName, data, (err) => {
-        err ? console.error(err) : console.log('A starter HTML file has been written to your folder. Please do not interact with it until you have complete are all prompts in console.')
+function finalize() {
+    fs.appendFile("./teamPage.html", addCard, (err) => {
+        err ? console.error(err) : console.log("Success. Please check you local files for the newly created webpage. :)");
     })
 }
 
-
-
-
+function writeFile(fileName, data,) {
+    fs.writeFile(fileName, data, (err) => {
+        if (err) {
+            console.error(err)
+        }
+    })
+}
 
 function initialize() {
     writeFile("teamPage.html", makePageHead());

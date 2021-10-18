@@ -1,7 +1,7 @@
 function makeInternCard(data) {
     return `
         
-    <!-- team engineer -->
+    <!-- team intern -->
     <div class="col s12 m3 card custom-card">
       <div>
         <h4 class="center purple-text custom-h4 teamName">${data.name}</h4>
@@ -14,7 +14,6 @@ function makeInternCard(data) {
         </ul>
       </div>
     </div>
-  
   `
   };
 

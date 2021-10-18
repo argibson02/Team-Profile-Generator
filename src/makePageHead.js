@@ -28,8 +28,6 @@ function makePageHead() {
           <!--   Card Section   -->
           <div class="row" id="cardsRow">
 
-  
-
   `;
 };
 
