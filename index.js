@@ -114,7 +114,7 @@ const internQuestions = [
 
 
 
-
+//============================ Prompts
 function promptManager() {
     inquirer
         .prompt(managerQuestions)
