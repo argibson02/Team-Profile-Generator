@@ -3,9 +3,9 @@ const fs = require("fs");
 const makePageHead = require("./src/makePageHead.js");
 const makePageTail = require("./src/makePageTail.js");
 
-const makeIntern = require("./lib/classIntern.js");
-const makeEngineer = require("./lib/classEngineer.js");
-const makeManager = require("./lib/classManager.js");
+const MakeIntern = require("./lib/classIntern.js");
+const MakeEngineer = require("./lib/classEngineer.js");
+const MakeManager = require("./lib/classManager.js");
 
 const team = [];
 
@@ -129,9 +129,10 @@ function promptManager() {
     inquirer
         .prompt(managerQuestions)
         .then((response) => {
-            let newManager = response;
-            console.log(response);
-
+            var newMember = new MakeManager(response.name, response.id, response.email, response.managerOffice)
+            console.log(newMember);
+            team.push(newMember);
+            console.log(team);
         })
 }
 
@@ -183,9 +184,12 @@ function addTeamMember() {
 
 function writeFile(fileName, data,) {
     fs.writeFile(fileName, data, (err) => {
-        err ? console.error(err) : console.log('Success! Please check you local files for your new Team Webpage')
+        err ? console.error(err) : console.log('A starter HTML file has been written to your folder. Please do not interact with it until you have complete are all prompts in console.')
     })
 }
+
+
+
 
 
 function initialize() {
