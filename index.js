@@ -124,12 +124,12 @@ function promptManager() {
             var newMember = new Manager(response.name, response.id, response.email, response.managerOffice, response.role);
             team.push(newMember);
             // console.log(team);
-            let addCard = makeManager(response)
-            fs.appendFile("./teamPage.html", addCard, (err) => {
-                if (err) {
-                    console.error(err)
-                }
-            })
+            // let addCard = makeManager(response)
+            // fs.appendFile("./teamPage.html", addCard, (err) => {
+            //     if (err) {
+            //         console.error(err)
+            //     }
+            // })
         })
         .then(() => {
             addTeamMember();
@@ -145,12 +145,12 @@ function promptEngineer() {
             var newMember = new Engineer(response.name, response.id, response.email, response.engineerGit, response.role);
             team.push(newMember);
             // console.log(team);
-            let addCard = makeEngineer(response)
-            fs.appendFile("./teamPage.html", addCard, (err) => {
-                if (err) {
-                    console.error(err)
-                }
-            })
+            // let addCard = makeEngineer(response)
+            // fs.appendFile("./teamPage.html", addCard, (err) => {
+            //     if (err) {
+            //         console.error(err)
+            //     }
+            // })
         })
         .then(() => {
             addTeamMember();
@@ -166,19 +166,19 @@ function promptIntern() {
             var newMember = new Intern(response.name, response.id, response.email, response.internSchool, response.role);
             team.push(newMember);
             // console.log(team);
-            let addCard = makeIntern(response)
-            fs.appendFile("./teamPage.html", addCard, (err) => {
-                if (err) {
-                    console.error(err)
-                }
-            })
+            // let addCard = makeIntern(response)
+            // fs.appendFile("./teamPage.html", addCard, (err) => {
+            //     if (err) {
+            //         console.error(err)
+            //     }
+            // })
         })
         .then(() => {
             addTeamMember();
         })
 }
 
-
+//============================== Add team members
 function addTeamMember() {
     inquirer
         .prompt(addQuestion)
@@ -200,12 +200,56 @@ function addTeamMember() {
 }
 
 
-function finalize() {
-    fs.appendFile("./teamPage.html", makePageTail(), (err) => {
-        err ? console.error(err) : console.log("Success. Please check your local files for the newly created webpage. :)");
-    })
+//=================================== Make All Cards
+function createAllCards() {
+    // console.log(team);
+    for (i = 0; i < team.length; i++) {
+        if (team[i].role === "Manager") {
+            var newMember = [team[i].name, team[i].id, team[i].email, team[i].managerOffice, team[i].role];
+            let addCard = makeManager(newMember)
+            fs.appendFile("./teamPage.html", addCard, (err) => {
+                if (err) {
+                    console.error(err)
+                }
+            })
+        }
+        if (team[i].role === "Engineer") {
+            var newMember = [team[i].name, team[i].id, team[i].email, team[i].engineerGit, team[i].role];
+            let addCard = makeEngineer(newMember)
+            fs.appendFile("./teamPage.html", addCard, (err) => {
+                if (err) {
+                    console.error(err)
+                }
+            })
+        }
+        if (team[i].role === "Intern") {
+            var newMember = [team[i].name, team[i].id, team[i].email, team[i].internSchool, team[i].role];
+            let addCard = makeIntern(newMember)
+            fs.appendFile("./teamPage.html", addCard, (err) => {
+                if (err) {
+                    console.error(err)
+                }
+            })
+        }
+    }
 }
 
+
+//==================================== Create HTML cards and tail
+function finalize() {
+    let finalizePromise = new Promise(function() {
+        createAllCards();
+    });
+    finalizePromise.then(
+        fs.appendFile("./teamPage.html", makePageTail(), (err) => {
+            err ? console.error(err) : console.log("Success. Please check your local files for the newly created webpage. :)");
+        })
+    );
+}
+
+
+
+//============================================= Initialization and page write
 function writeFile(fileName, data,) {
     fs.writeFile(fileName, data, (err) => {
         if (err) {
@@ -219,3 +263,94 @@ function initialize() {
     addTeamMember()
 }
 initialize();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// //============================ Prompts
+// function promptManager() {
+//     inquirer
+//         .prompt(managerQuestions)
+//         .then((response) => {
+//             let role = { role: "Manager" };
+//             response = { ...response, ...role };
+//             var newMember = new Manager(response.name, response.id, response.email, response.managerOffice, response.role);
+//             team.push(newMember);
+//             // console.log(team);
+//             let addCard = makeManager(response)
+//             fs.appendFile("./teamPage.html", addCard, (err) => {
+//                 if (err) {
+//                     console.error(err)
+//                 }
+//             })
+//         })
+//         .then(() => {
+//             addTeamMember();
+//         })
+// }
+
+// function promptEngineer() {
+//     inquirer
+//         .prompt(engineerQuestions)
+//         .then((response) => {
+//             let role = { role: "Engineer" };
+//             response = { ...response, ...role };
+//             var newMember = new Engineer(response.name, response.id, response.email, response.engineerGit, response.role);
+//             team.push(newMember);
+//             // console.log(team);
+//             let addCard = makeEngineer(response)
+//             fs.appendFile("./teamPage.html", addCard, (err) => {
+//                 if (err) {
+//                     console.error(err)
+//                 }
+//             })
+//         })
+//         .then(() => {
+//             addTeamMember();
+//         })
+// }
+
+// function promptIntern() {
+//     inquirer
+//         .prompt(internQuestions)
+//         .then((response) => {
+//             let role = { role: "Intern" };
+//             response = { ...response, ...role };
+//             var newMember = new Intern(response.name, response.id, response.email, response.internSchool, response.role);
+//             team.push(newMember);
+//             // console.log(team);
+//             let addCard = makeIntern(response)
+//             fs.appendFile("./teamPage.html", addCard, (err) => {
+//                 if (err) {
+//                     console.error(err)
+//                 }
+//             })
+//         })
+//         .then(() => {
+//             addTeamMember();
+//         })
+// }
