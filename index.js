@@ -6,7 +6,7 @@ const makePageTail = require("./src/makePageTail.js");
 const makeEngineer = require("./src/makeEngineer.js");
 const makeManager = require("./src/makeManager.js");
 const makeIntern = require("./src/makeIntern.js");
-const makeCss = require("./src/makeCSS.js")
+const makeCss = require("./src/makeCSS.js");
 
 const Intern = require("./lib/classIntern.js");
 const Engineer = require("./lib/classEngineer.js");
@@ -127,7 +127,7 @@ function promptManager() {
         })
         .then(() => {
             addTeamMember();
-        })
+        });
 }
 
 function promptEngineer() {
@@ -141,7 +141,7 @@ function promptEngineer() {
         })
         .then(() => {
             addTeamMember();
-        })
+        });
 }
 
 function promptIntern() {
@@ -155,7 +155,7 @@ function promptIntern() {
         })
         .then(() => {
             addTeamMember();
-        })
+        });
 }
 
 //============================== Add team members
@@ -176,7 +176,7 @@ function addTeamMember() {
             else if (memberRole === "Finish constructing webpage.") {
                 finalize();
             }
-        })
+        });
 }
 
 
@@ -185,30 +185,30 @@ function createAllCards() {
     for (i = 0; i < team.length; i++) {
         if (team[i].role === "Manager") {
             var newMember = [team[i].name, team[i].id, team[i].email, team[i].managerOffice, team[i].role];
-            let addCard = makeManager(newMember)
+            let addCard = makeManager(newMember);
             fs.appendFile("./teamPage.html", addCard, (err) => {
                 if (err) {
-                    console.error(err)
+                    console.error(err);
                 }
-            })
+            });
         }
         if (team[i].role === "Engineer") {
             var newMember = [team[i].name, team[i].id, team[i].email, team[i].engineerGit, team[i].role];
-            let addCard = makeEngineer(newMember)
+            let addCard = makeEngineer(newMember);
             fs.appendFile("./teamPage.html", addCard, (err) => {
                 if (err) {
-                    console.error(err)
+                    console.error(err);
                 }
-            })
+            });
         }
         if (team[i].role === "Intern") {
             var newMember = [team[i].name, team[i].id, team[i].email, team[i].internSchool, team[i].role];
-            let addCard = makeIntern(newMember)
+            let addCard = makeIntern(newMember);
             fs.appendFile("./teamPage.html", addCard, (err) => {
                 if (err) {
-                    console.error(err)
+                    console.error(err);
                 }
-            })
+            });
         }
     }
 }
@@ -216,7 +216,7 @@ function createAllCards() {
 
 //==================================== Create HTML cards and tail
 function finalize() {
-    let finalizePromise = new Promise(function() {
+    let finalizePromise = new Promise(function () {
         createAllCards();
     });
     finalizePromise.then(
@@ -230,14 +230,14 @@ function finalize() {
 function writeFile(fileName, data,) {
     fs.writeFile(fileName, data, (err) => {
         if (err) {
-            console.error(err)
+            console.error(err);
         }
-    })
+    });
 }
 
 function initialize() {
     writeFile("teamPage.html", makePageHead());
     writeFile("teamPageCss.css", makeCss());
-    addTeamMember()
+    addTeamMember();
 }
 initialize();
