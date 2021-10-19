@@ -186,7 +186,7 @@ function createAllCards() {
         if (team[i].role === "Manager") {
             var newMember = [team[i].name, team[i].id, team[i].email, team[i].managerOffice, team[i].role];
             let addCard = makeManager(newMember);
-            fs.appendFile("./teamPage.html", addCard, (err) => {
+            fs.appendFile("./dist/teamPage.html", addCard, (err) => {
                 if (err) {
                     console.error(err);
                 }
@@ -195,7 +195,7 @@ function createAllCards() {
         if (team[i].role === "Engineer") {
             var newMember = [team[i].name, team[i].id, team[i].email, team[i].engineerGit, team[i].role];
             let addCard = makeEngineer(newMember);
-            fs.appendFile("./teamPage.html", addCard, (err) => {
+            fs.appendFile("./dist/teamPage.html", addCard, (err) => {
                 if (err) {
                     console.error(err);
                 }
@@ -204,7 +204,7 @@ function createAllCards() {
         if (team[i].role === "Intern") {
             var newMember = [team[i].name, team[i].id, team[i].email, team[i].internSchool, team[i].role];
             let addCard = makeIntern(newMember);
-            fs.appendFile("./teamPage.html", addCard, (err) => {
+            fs.appendFile("./dist/teamPage.html", addCard, (err) => {
                 if (err) {
                     console.error(err);
                 }
@@ -220,7 +220,7 @@ function finalize() {
         createAllCards();
     });
     finalizePromise.then(
-        fs.appendFile("./teamPage.html", makePageTail(), (err) => {
+        fs.appendFile("./dist/teamPage.html", makePageTail(), (err) => {
             err ? console.error(err) : console.log("Success. Please check your local files for the newly created webpage. :)");
         })
     );
@@ -236,8 +236,8 @@ function writeFile(fileName, data,) {
 }
 
 function initialize() {
-    writeFile("teamPage.html", makePageHead());
-    writeFile("teamPageCss.css", makeCss());
+    writeFile("./dist/teamPage.html", makePageHead());
+    writeFile("./dist/teamPageCss.css", makeCss());
     addTeamMember();
 }
 initialize();
