@@ -11,6 +11,7 @@ const makeCss = require("./src/makeCSS.js");
 const Intern = require("./lib/classIntern.js");
 const Engineer = require("./lib/classEngineer.js");
 const Manager = require("./lib/classManager.js");
+const { resolve } = require("path");
 
 
 const team = [];
@@ -111,7 +112,6 @@ const internQuestions = [
     }
     ,
 ];
-
 
 
 
@@ -216,14 +216,19 @@ function createAllCards() {
 
 //==================================== Create HTML cards and tail
 function finalize() {
-    let finalizePromise = new Promise(function () {
-        createAllCards();
-    });
-    finalizePromise.then(
+    function renderCards() {
+        return new Promise(resolve => {
+            resolve(createAllCards());
+        });
+    }
+    
+    async function renderTail() {
+       await renderCards(); 
         fs.appendFile("./dist/teamPage.html", makePageTail(), (err) => {
             err ? console.error(err) : console.log("Success. Please check your local files for the newly created webpage. :)");
         })
-    );
+    }
+    renderTail();
 }
 
 //============================================= Initialization and page write
