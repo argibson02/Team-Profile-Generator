@@ -17,13 +17,14 @@ Features
 * Futurama theme!
 * Jest driven unit tests in the background.
 
+**[Click this link WATCH the Team-Profile-Generator in action](https://watch.screencastify.com/v/hn5xgCNvNINj69kqOtQo)**
+
+[Click this link to go to demo webpage](https://argibson02.github.io/Team-Profile-Generator/)
+
 ![Demo image of generator](./images/team-gen-demo.png)
 ![Demo image of outputted HTML page](./images/team-output-demo.png)
 
-
-**[Click this link WATCH the Team-Profile-Generator in action](https://watch.screencastify.com/v/hn5xgCNvNINj69kqOtQo)**
  <br />
-
 
 
 ## Installation Instructions and Getting Started
@@ -55,7 +56,7 @@ Node.js, Inquirer, and Jest need to be installed. To start the application, navi
 ## Authors
 **Alexander Gibson** 
 
-- [Link to Alex's Portfolio Site](https://argibson02.github.io/Professional-Portfolio-2/)
+- [Link to Alex's Portfolio Site](https://argibson02.github.io/Team-Profile-Generator/)
 - [Link to Alex's Github](https://github.com/argibson02)
 - [Link to Alex's LinkedIn](www.linkedin.com/in/alexander-gibson-1b0bb6105)
 
