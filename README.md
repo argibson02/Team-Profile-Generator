@@ -21,8 +21,9 @@ Features
 ![Demo image of outputted HTML page](./images/team-output-demo.png)
 
 
-[Click this link WATCH the Team-Profile-Generator in action]()
+**[Click this link WATCH the Team-Profile-Generator in action](https://watch.screencastify.com/v/hn5xgCNvNINj69kqOtQo)**
  <br />
+
 
 
 ## Installation Instructions and Getting Started
