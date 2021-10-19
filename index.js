@@ -218,7 +218,9 @@ function createAllCards() {
 function finalize() {
     function renderCards() {
         return new Promise(resolve => {
+            setTimeout(() => {
             resolve(createAllCards());
+            }, 1500);
         });
     }
     
