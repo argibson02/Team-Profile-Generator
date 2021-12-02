@@ -56,9 +56,9 @@ Node.js, Inquirer, and Jest need to be installed. To start the application, navi
 ## Authors
 **Alexander Gibson** 
 
-- [Link to Alex's Portfolio Site](https://argibson02.github.io/Team-Profile-Generator/)
+- [Link to Alex's Portfolio Site](https://argibson02.github.io/Professional-Portfolio-React/)
 - [Link to Alex's Github](https://github.com/argibson02)
-- [Link to Alex's LinkedIn](www.linkedin.com/in/alexander-gibson-1b0bb6105)
+- [Link to Alex's LinkedIn](https://www.linkedin.com/in/alexander-r-gibson/)
 
 
 ## Acknowledgments 😊
